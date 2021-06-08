@@ -44,14 +44,14 @@ film_put_args.add_argument("rating", type=int, help='You must specify the Rating
 
 
 #Create a resource for the API
-class Film(Resource):
+class Film_db(Resource):
     """
     The Film Resource for the API 
     """
 
     def get(self, film_id):
-       
-        return {"Film ID " + str(film_id) : films[film_id]}, 200#Return the requested information and the HTTP code
+        output = Film.query.get(id = film_id)
+        return output
 
 
     def put(self, film_id):
